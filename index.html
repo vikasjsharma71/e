@@ -149,12 +149,7 @@ if __name__ == '__main__':
 
 # Request url ex
 # http://127.0.0.1:5000/api/users/1
-# http://127.0.0.1:5000/api/users/2import redis
-
-r = redis.Redis(host="localhost", port=6379, db=0)
-r.set('name', 'ash')
-value = r.get('name')
-print("Value from Redis:", value.decode())
+# http://127.0.0.1:5000/api/users/2
 </code></pre>
 
 <pre><code>
