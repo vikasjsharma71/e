@@ -183,23 +183,27 @@ if __name__ == '__main__':
 
 <h2>6. Flask API: Square a Number</h2>
 <pre><code>
-from flask import Flask, jsonify
+ffrom flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET'])
-def home():
-    return jsonify({'data': "hello world"})
-
-@app.route('/home/&lt;int:num&gt;', methods=['GET'])
-def disp(num):
-    return jsonify({'data': num**2})
+@app.route('/square', methods=['GET'])
+def square():
+    try:
+        num = int(request.args.get('number'))
+        return jsonify({
+            "practical": 9,
+            "number": num,
+            "square": num ** 2
+        })
+    except (TypeError, ValueError):
+        return jsonify({"error": "Invalid input, provide an integer"}), 400
 
 if __name__ == '__main__':
-    app.run(debug=True)
-</code></pre>
+    app.run(debug=True, port=5001)
 
-<code>http://127.0.0.1:5000/home/10</code>
+# Request url: http://127.0.0.1:5001/square?number=5
+</code></pre>
 
 <h2>7.Casandra </h2>
 <pre><code>
